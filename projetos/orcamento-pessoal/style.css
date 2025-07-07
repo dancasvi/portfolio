@@ -1,0 +1,18 @@
+body {
+  background-color: #f4f6f8;
+}
+.card, .modal-content {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.list-group-item button {
+  float: right;
+}
+#saldo.positivo {
+  color: green;
+}
+#saldo.negativo {
+  color: red;
+}
+#saldo.zerado {
+  color: blue;
+}

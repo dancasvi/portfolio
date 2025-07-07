@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Orçamento Pessoal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container mt-4" id="login-section">
+  <h2 class="text-center">Login</h2>
+  <form id="login-form">
+    <div class="mb-3">
+      <label class="form-label">Usuário</label>
+      <input type="text" id="username" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+  </form>
+</div>
+
+<div class="container mt-4 d-none" id="main-app">
+  <h4>Saldo Atual: <span id="saldo" class="fw-bold"></span></h4>
+  
+  <ul class="nav nav-tabs mt-3" id="tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="tab" href="#receitas">Receitas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#despesas">Despesas</a>
+    </li>
+    <li class="nav-item" hidden>
+      <a class="nav-link" data-bs-toggle="tab" href="#dashboards">Dashboards</a>
+    </li>
+  </ul>
+
+  <div class="tab-content mt-3">
+    <div class="tab-pane fade show active" id="receitas">
+      <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalReceita">+ Receita</button>
+      <ul class="list-group" id="lista-receitas"></ul>
+    </div>
+
+    <div class="tab-pane fade" id="despesas">
+      <button class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#modalDespesa">+ Despesa</button>
+      <ul class="list-group" id="lista-despesas"></ul>
+    </div>
+
+    <div class="tab-pane fade" id="dashboards">
+      <div class="my-4">
+        <canvas id="graficoColuna"></canvas>
+      </div>
+      <div class="my-4">
+        <canvas id="graficoPizza"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <button class="btn btn-outline-primary" id="btnBackup">Backup</button>
+    <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalImportar">Importar</button>
+  </div>
+</div>
+
+<!-- MODAL RECEITA -->
+<div class="modal fade" id="modalReceita" tabindex="-1">
+  <div class="modal-dialog">
+    <form id="form-receita" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Receita</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="edit-receita-id" />
+        <input type="text" class="form-control mb-2" placeholder="Descrição" id="descricao-receita" required />
+        <input type="number" class="form-control mb-2" placeholder="Valor" id="valor-receita" step="0.01" required />
+        <input type="date" class="form-control mb-2" id="dia-receita" required />
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" type="submit">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL DESPESA -->
+<div class="modal fade" id="modalDespesa" tabindex="-1">
+  <div class="modal-dialog">
+    <form id="form-despesa" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Despesa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="edit-despesa-id" />
+        <input type="text" class="form-control mb-2" placeholder="Descrição" id="descricao-despesa" required />
+        <input type="number" class="form-control mb-2" placeholder="Valor" id="valor-despesa" step="0.01" required />
+        <input type="date" class="form-control mb-2" id="dia-despesa" required />
+        <input type="number" class="form-control mb-2" placeholder="Recorrência (meses)" id="recorrencia-despesa" />
+        <select class="form-select mb-2" id="categoria-despesa" required>
+          <option value="">Categoria</option>
+          <option value="Alimentação">Alimentação</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Moradia">Moradia</option>
+          <option value="Lazer">Lazer</option>
+          <option value="Saúde">Saúde</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="submit">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL IMPORTAR -->
+<div class="modal fade" id="modalImportar" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Importar Dados</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <textarea id="importarTexto" rows="8" class="form-control" placeholder="Cole o conteúdo do backup aqui"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="btnImportar">Importar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
