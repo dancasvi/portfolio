@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo da Memória</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap & jQuery -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div><strong>Tempo:</strong> <span id="timer">00:00</span></div>
+            <div><strong>Movimentos:</strong> <span id="moves">0</span></div>
+        </div>
+        <div id="victory-screen" class="alert alert-success text-center d-none">
+            🎉 Parabéns! Você venceu em <span id="final-time"></span> com <span id="final-moves"></span> movimentos!
+            <br>
+            <button id="restart-btn" class="btn btn-success mt-3">🔁 Jogar Novamente</button>
+        </div>
+
+
+        <h2 class="text-center mb-4">Jogo da Memória</h2>
+        <div id="game-board" class="d-flex flex-wrap mx-auto"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

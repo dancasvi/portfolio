@@ -1,0 +1,118 @@
+:root {
+  --header-color: #6c5ce7;
+  --hover-color: #4c39da;
+  --footer-color: #6c5ce7;
+  --banner-color: #909090;
+}
+
+/* Banner */
+.banner {
+  background-color: var(--banner-color);
+  font-weight: bold;
+}
+
+/* Header e Footer */
+.header-bg {
+  background-color: var(--header-color);
+}
+
+.footer-bg {
+  background-color: var(--footer-color);
+}
+
+.header-bg *,
+.footer-bg * {
+  color: white !important;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Produto */
+.card-title {
+  color: var(--header-color);
+}
+
+.btn-primary {
+  background-color: var(--header-color);
+  border-color: var(--header-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--hover-color);
+  border-color: var(--header-color);
+}
+
+/* Botão Carrinho */
+#cart-button {
+  border-radius: 50px;
+}
+
+/* Toast personalizado */
+.toast-custom {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  color: #333;
+  padding: 12px 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border-left: 6px solid var(--header-color);;
+  display: none;
+  z-index: 9999;
+  animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .card:hover {
+    transform: translateY(-8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.btn-outline-primary {
+  border-color: #6c5ce7;
+  color: #6c5ce7;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: #6c5ce7;
+  color: white;
+  border-color: #6c5ce7;
+}
+
+.nav-link {
+  color: var(--header-color);
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+.navbar-light .nav-link {
+  color: var(--header-color);
+  font-weight: 500;
+}
+
+.navbar-light .nav-link:hover {
+  text-decoration: underline;
+}
+
+html {
+  scroll-behavior: smooth;
+}

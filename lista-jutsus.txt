@@ -1,0 +1,54 @@
+Katon: Goka Mekkyaku (Fire Style: Majestic Destroyer Flame); initial_power: 150; type: 1-ninjutsu; dps_extra_increase_per_level: 50; element: 2
+Mokuton: Jukai Kotan (Wood Style: Deep Forest Emergence); initial_power: 140; type: 1-ninjutsu; dps_extra_increase_per_level: 45; element: 1, 4
+Full Susanoo (Full Susanoo); initial_power: 300; type: 1-ninjutsu; dps_extra_increase_per_level: 80; element: 0
+Limbo: Hengoku (Limbo: Hengoku); initial_power: 280; type: 1-ninjutsu; dps_extra_increase_per_level: 70; element: 0
+Mugen Tsukuyomi (Infinite Tsukuyomi); initial_power: 500; type: 2-genjutsu; dps_extra_increase_per_level: 120; element: 0
+Shuriken Jutsu (Shuriken Technique); initial_power: 40; type: 1-ninjutsu; dps_extra_increase_per_level: 8; element: 0
+Katon: Gokakyu no Jutsu (Fire Style: Fireball Jutsu); initial_power: 60; type: 1-ninjutsu; dps_extra_increase_per_level: 12; element: 2
+Chidori (Chidori); initial_power: 100; type: 1-ninjutsu; dps_extra_increase_per_level: 25; element: 5
+Chidori Nagashi (Chidori Nagashi); initial_power: 110; type: 1-ninjutsu; dps_extra_increase_per_level: 28; element: 5
+Kirin (Kirin); initial_power: 200; type: 1-ninjutsu; dps_extra_increase_per_level: 60; element: 5
+Susanoo Arrow (Susanoo Arrow); initial_power: 180; type: 1-ninjutsu; dps_extra_increase_per_level: 55; element: 0
+Full Susanoo Lightning BijuuAmp (Full Susanoo Lightning BijuuAmp); initial_power: 400; type: 4-senjutsu; dps_extra_increase_per_level: 150; element: 5
+Oodama Rasengan (Giant Rasengan); initial_power: 120; type: 1-ninjutsu; dps_extra_increase_per_level: 35; element: 0
+Kuchyose no Jutsu (Summoning Jutsu); initial_power: 90; type: 1-ninjutsu; dps_extra_increase_per_level: 20; element: 0
+Katon: Gamayu Endan (Fire Style: Toad Oil Flame Bullet); initial_power: 130; type: 1-ninjutsu; dps_extra_increase_per_level: 40; element: 2
+Kage Bunshin no Jutsu (Shadow Clone Jutsu); initial_power: 50; type: 1-ninjutsu; dps_extra_increase_per_level: 15; element: 0
+Rasengan (Rasengan); initial_power: 100; type: 1-ninjutsu; dps_extra_increase_per_level: 25; element: 0
+Red Rasengan (Red Rasengan); initial_power: 150; type: 1-ninjutsu; dps_extra_increase_per_level: 40; element: 2
+Mini Bijuudama (Mini Tailed Beast Bomb); initial_power: 200; type: 1-ninjutsu; dps_extra_increase_per_level: 60; element: 1
+Fuuton: Rasenshuriken (Wind Style: Rasenshuriken); initial_power: 300; type: 1-ninjutsu; dps_extra_increase_per_level: 90; element: 3
+Senpou: Bijuudama Rasenshuriken (Tailed Beast Bomb Rasen Shuriken); initial_power: 500; type: 4-senjutsu; dps_extra_increase_per_level: 150; element: 1, 2, 3, 4, 5
+Healing (passive) (Healing (passive)); initial_power: 20; type: 1-ninjutsu; dps_extra_increase_per_level: 2; element: 0
+Byakugou (passive) (Byakugou (passive)); initial_power: 100; type: 1-ninjutsu; dps_extra_increase_per_level: 10; element: 0
+Raikiri (Raikiri); initial_power: 130; type: 1-ninjutsu; dps_extra_increase_per_level: 40; element: 5
+Doton: Doryuheki (Earth Style: Earth Wall); initial_power: 60; type: 1-ninjutsu; dps_extra_increase_per_level: 10; element: 4
+Kamui (Kamui); initial_power: 200; type: 1-ninjutsu; dps_extra_increase_per_level: 80; element: 0
+Susano'o Kamui Shuriken (Susano'o Kamui Shuriken); initial_power: 350; type: 1-ninjutsu; dps_extra_increase_per_level: 100; element: 0
+Senpou Mokuton: Shin Susenshu (Sage Art Wood Release: True Several Thousand Hands); initial_power: 500; type: 4-senjutsu; dps_extra_increase_per_level: 150; element: 1, 4
+Flying Thunder God (Flying Thunder God); initial_power: 160; type: 1-ninjutsu; dps_extra_increase_per_level: 50; element: 0
+Suiton: Suijinheki (Water Style: Water Wall); initial_power: 70; type: 1-ninjutsu; dps_extra_increase_per_level: 15; element: 1
+Shuriken Kage Bunshin no Jutsu (Shuriken Shadow Clone Jutsu); initial_power: 100; type: 1-ninjutsu; dps_extra_increase_per_level: 30; element: 0
+Katon: Hosenka no Jutsu (Fire Style: Phoenix Fire Jutsu); initial_power: 80; type: 1-ninjutsu; dps_extra_increase_per_level: 20; element: 2
+Hien (Flying Swallow); initial_power: 90; type: 1-ninjutsu; dps_extra_increase_per_level: 25; element: 5
+Katon: Haijin‑in (Fire Style: Burning Ash); initial_power: 110; type: 1-ninjutsu; dps_extra_increase_per_level: 30; element: 2
+Kagemane no Ami (Shadow Imitation Technique); initial_power: 60; type: 1-ninjutsu; dps_extra_increase_per_level: 15; element: 0
+Kage Kubishibari no Jutsu (Shadow Neck Bind Technique); initial_power: 80; type: 1-ninjutsu; dps_extra_increase_per_level: 22; element: 0
+Shintenshin no Jutsu (Mind Transfer Jutsu); initial_power: 70; type: 2-genjutsu; dps_extra_increase_per_level: 20; element: 0
+Nikudan Sensha (Human Boulder); initial_power: 85; type: 3-taijutsu; dps_extra_increase_per_level: 25; element: 0
+Magen: Jubaku Satsu (Demonic Illusion: Tree Binding Death); initial_power: 120; type: 2-genjutsu; dps_extra_increase_per_level: 45; element: 0
+Juho Soshiken (Gentle Step Twin Lion Fists); initial_power: 100; type: 3-taijutsu; dps_extra_increase_per_level: 35; element: 0
+Konbi Henge (Combined Transformation); initial_power: 30; type: 3-taijutsu; dps_extra_increase_per_level: 2; element: 0
+Inuzuka-ryuu: Jinjuu Kongou Henge: Santourou (Human–Beast Combination Transformation: Double‑Headed Wolf); initial_power: 90; type: 3-taijutsu; dps_extra_increase_per_level: 25; element: 0
+Kikaichū no Jutsu (Parasitic Insects Jutsu); initial_power: 70; type: 1-ninjutsu; dps_extra_increase_per_level: 20; element: 0
+Dynamic Entry (Dynamic Entry); initial_power: 60; type: 3-taijutsu; dps_extra_increase_per_level: 18; element: 0
+Hachimon Tonkou no Jin: Shoumon (Gate of Pain); initial_power: 200; type: 3-taijutsu; dps_extra_increase_per_level: 60; element: 0
+Hachimon Tonkou no Jin: Shimon - Sekizō (8th Gate - Gate of Death: Evening Elephant); initial_power: 450; type: 3-taijutsu; dps_extra_increase_per_level: 140; element: 0
+Hachimon Tonkou no Jin: Shimon - Yagai (8th Gate - Gate of Death: Night Guy); initial_power: 600; type: 3-taijutsu; dps_extra_increase_per_level: 180; element: 0
+Omote Renge (Primary Lotus); initial_power: 120; type: 3-taijutsu; dps_extra_increase_per_level: 35; element: 0
+Hakkeshou Kaiten (Eight Trigrams Palms Revolving Heaven); initial_power: 110; type: 3-taijutsu; dps_extra_increase_per_level: 30; element: 0
+Hakke Rokujūyon Sho (Eight Trigrams Sixty-Four Palms); initial_power: 130; type: 3-taijutsu; dps_extra_increase_per_level: 34; element: 0
+Tsuin Raijingu Doragonzu (Twin Rising Dragons); initial_power: 90; type: 1-ninjutsu; dps_extra_increase_per_level: 18; element: 0
+Kokuangyo no Jutsu (Bringer-of-Darkness Technique); initial_power: 150; type: 2-genjutsu; dps_extra_increase_per_level: 50; element: 0
+Tsukuyomi (Tsukuyomi); initial_power: 300; type: 2-genjutsu; dps_extra_increase_per_level: 90; element: 0
+Genjutsu: Sharingan (Genjutsu: Sharingan); initial_power: 100; type: 2-genjutsu; dps_extra_increase_per_level: 30; element: 0

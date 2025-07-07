@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shinobi Clicker</title>
+        <link rel="stylesheet" href="styles.css">
+
+        <!-- Bootstrap CSS v5.3.7 -->
+        <link 
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css" 
+            rel="stylesheet">
+
+        <link 
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+            rel="stylesheet">
+    </head>
+    <body>
+        <div class="modal fade" id="ninjaModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ninjaModalLabel">Forms</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                    <div class="row" id="ninjaFormsContainer"></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="app-container">
+            <header>
+                <div id="header-left">
+                    <img src="#" alt="Logo" />
+                    <h4>Shinobi Clicker</h4>
+                </div>
+
+                <div id="player-dmg-container">
+                    <div id="click-dmg-container">Click Dmg: 1</div>
+                    <div id="dps-container">Dps: 0</div>
+                    <div id="chakra-container">Current Chakra: 0%</div>
+                    <div id="reset-container">Resets: 0</div>
+                </div>
+
+                <i class="fa-solid fa-bars"></i>
+            </header>
+
+            <nav>
+                <ul>
+                    <li>History Mode</li>
+                    <li>Minigames</li>
+                    <li>Ninjas</li>
+                    <li>GACHA</li>
+                    <li>Store</li>
+                </ul>
+            </nav>
+
+            <div id="currency-container">
+                <div class="row">
+                    <div class="col-12">
+                        Ryos: 12012
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        Shinobi Coins: 260
+                    </div>
+                </div>
+            </div>
+
+            <div id="player-mini-panel">
+                <div id="active-buffs-panel">
+                    <h6>Active Buffs</h6>
+                    <ul>
+                        <li>Naruto's Senjutsu <i class="fa-solid fa-circle-info"></i></li>
+                        <li>Sasuke's Susano'o <i class="fa-solid fa-circle-info"></i></li>
+                        <li>Tsunade's Byakugou <i class="fa-solid fa-circle-info"></i></li>
+                    </ul>
+                </div>
+
+                <div id="current-clan-panel">
+                    <h6>Clan</h6>
+                    <p>Uchiha <i class="fa-solid fa-circle-info"></i></p>
+                </div>
+
+                <div id="stamina-panel">
+                    <h6>Stamina</h6>
+                    <ul>
+                        <li><i class="fa-solid fa-bolt"></i> <span>100/100</span></li>
+                        <li><label>My Ranking: </label>#300</li>
+                        <li><label>Time Played: </label>02:24:36</li>
+                    </ul>
+                </div>
+
+                <div id="global-ranking-panel">
+                    <h6>Global Ranking</h6>
+                    <ol>
+                        <li>Senju Hashirama</li>
+                        <li>Uchiha Madara</li>
+                        <li>Uzumaki Naruto</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div id="main-container">
+                <div id="history-mode-container">
+                    History Mode
+                </div>
+
+                <div id="minigame-mode-container">
+                    Minigames
+                </div>
+
+                <div id="ninja-list-container">
+                    <h5>Ninjas</h5>
+
+                    <div style="height: 40px;"></div>
+                </div>
+
+                <div id="gacha-container">
+                    GACHA
+                </div>
+
+                <div id="store-container">
+                    Store
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery v3.7.1 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- Bootstrap Bundle JS (inclui Popper.js) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.bundle.min.js"></script>
+        <script src="./controller/controllerNinja.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
