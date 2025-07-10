@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Naruto: Desvie dos Projéteis!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #0f3d0f;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    #game-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    #left-panel {
+      width: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    #left-panel .icon {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 15px;
+      border: 2px solid white;
+      border-radius: 8px;
+      cursor: default;
+    }
+
+    #left-panel .clickable {
+      cursor: pointer;
+      border-color: gold;
+    }
+
+    #pause-btn {
+      margin-top: 10px;
+      width: 64px;
+      height: 64px;
+      background-color: #444;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      border: 2px solid white;
+      cursor: pointer;
+    }
+
+    canvas {
+      border: 3px solid white;
+      background-color: #0f3d0f;
+      display: block;
+    }
+
+    #hud {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    #game-over {
+      display: none;
+      font-size: 2rem;
+      color: red;
+    }
+
+    #restart-btn {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .mobile-controls {
+      display: none;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .mobile-controls button {
+      margin: 0 10px;
+      width: 80px;
+    }
+
+    .level-msg {
+      position: fixed;
+      top: 20%;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 1.5rem;
+      z-index: 9999;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .boost-image {
+      position: fixed;
+      top: 30%;
+      right: 20px;
+      width: 160px;
+      z-index: 9998;
+      opacity: 0.9;
+    }
+
+    #menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #0f3d0f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-controls {
+        display: flex;
+      }
+
+      #left-panel {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="menu">
+    <h2>Escolha seu personagem</h2>
+    <select id="character-select" class="form-select w-50 text-center">
+      <option value="naruto">Naruto</option>
+      <option value="sasuke">Sasuke</option>
+      <option value="madara">Madara</option>
+    </select>
+    <button id="start-game" class="btn btn-success mt-4">Iniciar Jogo</button>
+  </div>
+
+  <h1 class="mt-3">Naruto: Desvie dos Projéteis!</h1>
+  <div id="hud">
+    🧠 Pontuação: <span id="score">0</span> | ❤️ Vidas: <span id="lives">3</span>
+  </div>
+
+  <div id="game-wrapper">
+    <div id="left-panel"></div>
+    <canvas id="gameCanvas" width="400" height="600"></canvas>
+  </div>
+
+  <div id="game-over">💀 GAME OVER 💀</div>
+  <button id="restart-btn" class="btn btn-danger">🔄 Reiniciar</button>
+
+  <div class="mobile-controls">
+    <button id="left-btn" class="btn btn-secondary">⬅️</button>
+    <button id="right-btn" class="btn btn-secondary">➡️</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const characterPaths = {
+      naruto: {
+        image: "assets/characters/naruto/naruto.png",
+        icons: [
+          { src: "assets/characters/naruto/kyuubi-jinchuuriki.jpg", name: "Kyuubi Jinchuuriki", active: false, tooltip: "Passiva de chakra" },
+          { src: "assets/characters/naruto/rasengan.png", name: "Rasengan", active: true, tooltip: "Clique ou pressione Espaço" }
+        ]
+      },
+      sasuke: {
+        image: "assets/characters/sasuke/sasuke.gif",
+        icons: [
+          { src: "assets/characters/sasuke/chidori-nagashi.jpg", name: "Chidori Nagashi", active: false, tooltip: "Passiva elétrica" },
+          { src: "assets/characters/sasuke/susanoo-arrow.png", name: "Susano'o Arrow", active: true, tooltip: "Clique ou pressione Espaço" }
+        ]
+      },
+      madara: {
+        image: "assets/characters/madara/madara.gif",
+        icons: [
+          { src: "assets/characters/madara/susanoo.jpg", name: "Susano'o", active: false, tooltip: "Passiva defensiva" },
+          { src: "assets/characters/madara/susanoo-blades.jpeg", name: "Susano'o Blades", active: true, tooltip: "Clique ou pressione Espaço" }
+        ]
+      }
+    };
+
+    const msgImgs = {
+      sugoi: "assets/naruto-subarashi.jpeg",
+      subarashii: "assets/naruto-subarashii.jpeg",
+      dattebayo: "assets/naruto-dattebayo.jpeg"
+    };
+
+    const kunaiImg = new Image();
+    kunaiImg.src = "assets/kunai.png";
+
+    const shurikenImg = new Image();
+    shurikenImg.src = "assets/shuriken.png";
+
+    let characterImg = new Image();
+    let currentIcons = [];
+    let currentActiveAbility = null;
+    let selectedCharacter = "";
+    let isInvincible = false;
+    let auraColor = null;
+    let auraTimeout = null;
+
+    const player = {
+      x: 180,
+      y: 530,
+      width: 80,
+      height: 80,
+      speed: 5
+    };
+
+    let projectiles = [];
+    let isGameOver = false;
+    let isPaused = false;
+    let score = 0;
+    let lives = 3;
+    let keys = {};
+
+    function spawnProjectile() {
+      if (isPaused) return;
+      const x = Math.random() * (canvas.width - 40);
+      const speed = 4 + Math.floor(score / 10);
+      const isShuriken = Math.random() < 0.5;
+      const img = isShuriken ? shurikenImg : kunaiImg;
+      const width = isShuriken ? 35 : 30;
+      const height = isShuriken ? 35 : 60;
+      projectiles.push({ x, y: 0, width, height, speed, img });
+
+      if (score > 0 && score % 10 === 0) {
+        showLevelUpMsg();
+      }
+
+      triggerPassive();
+    }
+
+    function triggerPassive() {
+      let type = selectedCharacter;
+      let trigger = false;
+      let duration = 0;
+
+      if (type === "naruto" && score % 20 === 0) {
+        auraColor = "rgba(255,0,0,0.5)";
+        duration = 5000;
+        trigger = true;
+      }
+      if (type === "sasuke" && score % 20 === 0) {
+        auraColor = "rgba(0,180,255,0.5)";
+        duration = 2000;
+        trigger = true;
+      }
+      if (type === "madara" && score % 15 === 0) {
+        auraColor = "rgba(0,0,255,0.5)";
+        duration = 8000;
+        trigger = true;
+      }
+
+      if (trigger && !isInvincible) {
+        isInvincible = true;
+        clearTimeout(auraTimeout);
+        auraTimeout = setTimeout(() => {
+          isInvincible = false;
+          auraColor = null;
+        }, duration);
+      }
+    }
+
+    function drawAura() {
+      if (auraColor) {
+        ctx.beginPath();
+        ctx.arc(player.x + player.width/2, player.y + player.height/2, 50, 0, Math.PI * 2);
+        ctx.fillStyle = auraColor;
+        ctx.fill();
+      }
+    }
+
+    function activateSpecial() {
+      if ((selectedCharacter === "naruto" || selectedCharacter === "sasuke") && score >= 50) {
+        projectiles = [];
+        alert(currentActiveAbility.name + " ativado!");
+        score = 0;
+      }
+      if (selectedCharacter === "madara" && score >= 30) {
+        projectiles = [];
+        alert(currentActiveAbility.name + " ativado!");
+        score = 0;
+      }
+    }
+
+    function drawPlayer() {
+      ctx.drawImage(characterImg, player.x, player.y, player.width, player.height);
+    }
+
+    function drawProjectiles() {
+      projectiles.forEach(p => {
+        ctx.drawImage(p.img, p.x, p.y, p.width, p.height);
+      });
+    }
+
+    function updateProjectiles() {
+      if (isPaused) return;
+      for (let i = 0; i < projectiles.length; i++) {
+        const p = projectiles[i];
+        p.y += p.speed;
+
+        if (
+          !isInvincible &&
+          p.x < player.x + player.width &&
+          p.x + p.width > player.x &&
+          p.y < player.y + player.height &&
+          p.y + p.height > player.y
+        ) {
+          lives--;
+          updateHUD();
+          projectiles.splice(i, 1);
+          i--;
+          if (lives <= 0) isGameOver = true;
+        }
+
+        if (p.y > canvas.height) {
+          projectiles.splice(i, 1);
+          i--;
+        }
+      }
+    }
+
+    function updateHUD() {
+      $('#score').text(score);
+      $('#lives').text(lives);
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function movePlayer() {
+      if (isPaused) return;
+      if (keys['ArrowLeft'] && player.x > 0) player.x -= player.speed;
+      if (keys['ArrowRight'] && player.x + player.width < canvas.width) player.x += player.speed;
+    }
+
+    function showLevelUpMsg() {
+      const messages = ["sugoi", "subarashii", "dattebayo"];
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      const balloon = $('<div class="level-msg">' + msg + '</div>');
+      $('body').append(balloon);
+      balloon.fadeOut(1500, () => balloon.remove());
+      const img = $('<img class="boost-image" src="' + msgImgs[msg] + '" />');
+      $('body').append(img);
+      setTimeout(() => img.fadeOut(500, () => img.remove()), 2000);
+    }
+
+    function updateIcons() {
+      const panel = $('#left-panel');
+      panel.empty();
+
+      currentIcons.forEach(icon => {
+        const img = $('<img class="icon">').attr('src', icon.src).attr('title', icon.tooltip);
+        if (icon.active) {
+          img.addClass("clickable");
+          currentActiveAbility = icon;
+          img.on('click', () => {
+            if (!isPaused && !isGameOver) activateSpecial();
+          });
+        }
+        panel.append(img);
+      });
+
+      const pauseBtn = $('<button id="pause-btn" title="Pausar (ESC)">⏸</button>');
+      pauseBtn.on('click', () => isPaused = !isPaused);
+      panel.append(pauseBtn);
+    }
+
+    function gameLoop() {
+      if (isGameOver) {
+        $('#game-over').show();
+        $('#restart-btn').show();
+        return;
+      }
+
+      clearCanvas();
+      movePlayer();
+      updateProjectiles();
+      drawAura();
+      drawPlayer();
+      drawProjectiles();
+      requestAnimationFrame(gameLoop);
+    }
+
+    $(document).keydown(e => {
+      keys[e.key] = true;
+      if (e.key === "Escape") isPaused = !isPaused;
+      if (e.code === "Space" && currentActiveAbility && !isPaused && !isGameOver) activateSpecial();
+    });
+
+    $(document).keyup(e => keys[e.key] = false);
+
+    $('#start-game').click(() => {
+      selectedCharacter = $('#character-select').val();
+      characterImg.src = characterPaths[selectedCharacter].image;
+      currentIcons = characterPaths[selectedCharacter].icons;
+      updateIcons();
+      $('#menu').hide();
+      score = 0; lives = 3; isGameOver = false; isPaused = false; projectiles = [];
+      updateHUD();
+      setInterval(() => {
+        if (!isPaused && !isGameOver) {
+          score++;
+          updateHUD();
+        }
+      }, 500);
+      setInterval(spawnProjectile, 1000);
+      gameLoop();
+    });
+
+    $('#restart-btn').click(() => {
+      player.x = 180;
+      projectiles = [];
+      isGameOver = false;
+      lives = 3;
+      score = 0;
+      updateHUD();
+      $('#game-over').hide();
+      $('#restart-btn').hide();
+      gameLoop();
+    });
+  </script>
+</body>
+</html>
