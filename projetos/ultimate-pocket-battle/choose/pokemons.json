@@ -1,182 +1,22 @@
 [
-    {
-        "name": "Pikachu",
-        "type": "Electric",
-        "hp": 309,
-        "atk": 199,
-        "def": 131,
-        "spe": 81,
-        "moves": ["Aqua Tail", "Bug Buzz", "Hydro Pump", "Dark Pulse"]
-    },
-    {
-        "name": "Charmander",
-        "type": "Fire",
-        "hp": 238,
-        "atk": 153,
-        "def": 132,
-        "spe": 94,
-        "moves": ["Earthquake", "Flamethrower", "Sludge Bomb", "Volt Tackle"]
-    },
-    {
-        "name": "Squirtle",
-        "type": "Water",
-        "hp": 319,
-        "atk": 175,
-        "def": 82,
-        "spe": 99,
-        "moves": ["Disarming Voice", "Leaf Blade", "Confusion", "Metal Claw"]
-    },
-    {
-        "name": "Bulbasaur",
-        "type": "Grass",
-        "hp": 248,
-        "atk": 110,
-        "def": 115,
-        "spe": 117,
-        "moves": ["Shadow Claw", "Draining Kiss", "Giga Drain", "Confusion"]
-    },
-    {
-        "name": "Jigglypuff",
-        "type": "Normal",
-        "hp": 315,
-        "atk": 120,
-        "def": 81,
-        "spe": 131,
-        "moves": ["Phantom Force", "Dragon Claw", "Struggle Bug", "Iron Tail"]
-    },
-    {
-        "name": "Meowth",
-        "type": "Normal",
-        "hp": 488,
-        "atk": 195,
-        "def": 109,
-        "spe": 111,
-        "moves": ["Draining Kiss", "Thunderbolt", "Disarming Voice", "Water Gun"]
-    },
-    {
-        "name": "Machop",
-        "type": "Fighting",
-        "hp": 316,
-        "atk": 174,
-        "def": 69,
-        "spe": 58,
-        "moves": ["Volt Tackle", "Solar Beam", "Psychic", "Mud-Slap"]
-    },
-    {
-        "name": "Geodude",
-        "type": "Rock",
-        "hp": 320,
-        "atk": 164,
-        "def": 110,
-        "spe": 67,
-        "moves": ["Metal Claw", "Hyper Beam", "Ice Beam", "Steel Wing"]
-    },
-    {
-        "name": "Psyduck",
-        "type": "Water",
-        "hp": 219,
-        "atk": 164,
-        "def": 84,
-        "spe": 65,
-        "moves": ["Play Rough", "Solar Beam", "Double Kick", "Earthquake"]
-    },
-    {
-        "name": "Growlithe",
-        "type": "Fire",
-        "hp": 183,
-        "atk": 118,
-        "def": 88,
-        "spe": 128,
-        "moves": ["Steel Wing", "Iron Tail", "Thunder", "Stone Edge"]
-    },
-    {
-        "name": "Magnemite",
-        "type": "Electric",
-        "hp": 202,
-        "atk": 143,
-        "def": 87,
-        "spe": 93,
-        "moves": ["Draining Kiss", "Dark Pulse", "Karate Chop", "Play Rough"]
-    },
-    {
-        "name": "Onix",
-        "type": "Rock",
-        "hp": 185,
-        "atk": 151,
-        "def": 96,
-        "spe": 84,
-        "moves": ["Ice Beam", "Struggle Bug", "Mud-Slap", "Fire Blast"]
-    },
-    {
-        "name": "Eevee",
-        "type": "Normal",
-        "hp": 400,
-        "atk": 111,
-        "def": 81,
-        "spe": 58,
-        "moves": ["Outrage", "Sludge Bomb", "Hyper Beam", "Karate Chop"]
-    },
-    {
-        "name": "Gastly",
-        "type": "Ghost",
-        "hp": 195,
-        "atk": 196,
-        "def": 82,
-        "spe": 133,
-        "moves": ["Fire Blast", "Ice Punch", "Razor Leaf", "Leaf Blade"]
-    },
-    {
-        "name": "Dratini",
-        "type": "Dragon",
-        "hp": 472,
-        "atk": 149,
-        "def": 147,
-        "spe": 54,
-        "moves": ["Solar Beam", "Ice Punch", "Play Rough", "Water Gun"]
-    },
-    {
-        "name": "Chikorita",
-        "type": "Grass",
-        "hp": 197,
-        "atk": 177,
-        "def": 121,
-        "spe": 80,
-        "moves": ["Mud-Slap", "Flash Cannon", "Aqua Tail", "Shadow Ball"]
-    },
-    {
-        "name": "Cyndaquil",
-        "type": "Fire",
-        "hp": 242,
-        "atk": 130,
-        "def": 71,
-        "spe": 150,
-        "moves": ["Hydro Pump", "Sludge Bomb", "Flamethrower", "Double Kick"]
-    },
-    {
-        "name": "Totodile",
-        "type": "Water",
-        "hp": 400,
-        "atk": 104,
-        "def": 99,
-        "spe": 77,
-        "moves": ["Quick Attack", "Dark Pulse", "Tackle", "Shadow Ball"]
-    },
-    {
-        "name": "Mareep",
-        "type": "Electric",
-        "hp": 399,
-        "atk": 131,
-        "def": 90,
-        "spe": 75,
-        "moves": ["Double Kick", "Psychic", "Giga Drain", "Dragon Claw"]
-    },
-    {
-        "name": "Sneasel",
-        "type": "Dark",
-        "hp": 403,
-        "atk": 195,
-        "def": 122,
-        "spe": 50,
-        "moves": ["Aqua Tail", "Signal Beam", "Disarming Voice", "Steel Wing"]
-    }
+  {"id":25,"name":"Pikachu","type":"Electric","hp":309,"atk":199,"def":131,"spe":81,"moves":["Aqua Tail","Bug Buzz","Hydro Pump","Dark Pulse"]},
+  {"id":4,"name":"Charmander","type":"Fire","hp":238,"atk":153,"def":132,"spe":94,"moves":["Earthquake","Flamethrower","Sludge Bomb","Volt Tackle"]},
+  {"id":7,"name":"Squirtle","type":"Water","hp":319,"atk":175,"def":82,"spe":99,"moves":["Disarming Voice","Leaf Blade","Confusion","Metal Claw"]},
+  {"id":1,"name":"Bulbasaur","type":"Grass","hp":248,"atk":110,"def":115,"spe":117,"moves":["Shadow Claw","Draining Kiss","Giga Drain","Confusion"]},
+  {"id":39,"name":"Jigglypuff","type":"Normal","hp":315,"atk":120,"def":81,"spe":131,"moves":["Phantom Force","Dragon Claw","Struggle Bug","Iron Tail"]},
+  {"id":52,"name":"Meowth","type":"Normal","hp":488,"atk":195,"def":109,"spe":111,"moves":["Draining Kiss","Thunderbolt","Disarming Voice","Water Gun"]},
+  {"id":66,"name":"Machop","type":"Fighting","hp":316,"atk":174,"def":69,"spe":58,"moves":["Volt Tackle","Solar Beam","Psychic","Mud-Slap"]},
+  {"id":74,"name":"Geodude","type":"Rock","hp":320,"atk":164,"def":110,"spe":67,"moves":["Metal Claw","Hyper Beam","Ice Beam","Steel Wing"]},
+  {"id":54,"name":"Psyduck","type":"Water","hp":219,"atk":164,"def":84,"spe":65,"moves":["Play Rough","Solar Beam","Double Kick","Earthquake"]},
+  {"id":58,"name":"Growlithe","type":"Fire","hp":183,"atk":118,"def":88,"spe":128,"moves":["Steel Wing","Iron Tail","Thunder","Stone Edge"]},
+  {"id":81,"name":"Magnemite","type":"Electric","hp":202,"atk":143,"def":87,"spe":93,"moves":["Draining Kiss","Dark Pulse","Karate Chop","Play Rough"]},
+  {"id":95,"name":"Onix","type":"Rock","hp":185,"atk":151,"def":96,"spe":84,"moves":["Ice Beam","Struggle Bug","Mud-Slap","Fire Blast"]},
+  {"id":133,"name":"Eevee","type":"Normal","hp":400,"atk":111,"def":81,"spe":58,"moves":["Outrage","Sludge Bomb","Hyper Beam","Karate Chop"]},
+  {"id":92,"name":"Gastly","type":"Ghost","hp":195,"atk":196,"def":82,"spe":133,"moves":["Fire Blast","Ice Punch","Razor Leaf","Leaf Blade"]},
+  {"id":147,"name":"Dratini","type":"Dragon","hp":472,"atk":149,"def":147,"spe":54,"moves":["Solar Beam","Ice Punch","Play Rough","Water Gun"]},
+  {"id":152,"name":"Chikorita","type":"Grass","hp":197,"atk":177,"def":121,"spe":80,"moves":["Mud-Slap","Flash Cannon","Aqua Tail","Shadow Ball"]},
+  {"id":155,"name":"Cyndaquil","type":"Fire","hp":242,"atk":130,"def":71,"spe":150,"moves":["Hydro Pump","Sludge Bomb","Flamethrower","Double Kick"]},
+  {"id":158,"name":"Totodile","type":"Water","hp":400,"atk":104,"def":99,"spe":77,"moves":["Quick Attack","Dark Pulse","Tackle","Shadow Ball"]},
+  {"id":179,"name":"Mareep","type":"Electric","hp":399,"atk":131,"def":90,"spe":75,"moves":["Double Kick","Psychic","Giga Drain","Dragon Claw"]},
+  {"id":215,"name":"Sneasel","type":"Dark","hp":403,"atk":195,"def":122,"spe":50,"moves":["Aqua Tail","Signal Beam","Disarming Voice","Steel Wing"]}
 ]

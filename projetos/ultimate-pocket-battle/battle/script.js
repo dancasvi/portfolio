@@ -6,7 +6,6 @@ let player, pc;
 let movesData = {};
 let playerHPMap = {};
 let pcHPMap = {};
-let effectivenessChart = {};
 
 const attackSound = new Audio("sounds/attack.mp3");
 const faintSound = new Audio("sounds/faint.mp3");
@@ -14,13 +13,27 @@ const superEffectiveSound = new Audio("sounds/super-effective.mp3");
 const battleMusic = new Audio("sounds/battle-theme.mp3");
 battleMusic.loop = true;
 
+const effectivenessChart = {
+  Electric: { Water: 2, Flying: 2, Ground: 0 },
+  Water: { Fire: 2, Rock: 2, Grass: 0.5 },
+  Fire: { Grass: 2, Ice: 2, Water: 0.5, Rock: 0.5 },
+  Grass: { Water: 2, Rock: 2, Fire: 0.5, Flying: 0.5 },
+  Rock: { Flying: 2, Fire: 2 },
+  Fighting: { Normal: 2, Rock: 2 },
+  Ghost: { Normal: 0, Psychic: 2 },
+  Normal: {},
+  Dark: { Psychic: 2 },
+  Ice: { Grass: 2, Flying: 2 },
+  Psychic: { Fighting: 2 },
+  Fairy: { Fighting: 2, Dark: 2 }
+};
+
 function getEffectiveness(attackType, targetType) {
-  return effectivenessChart[attackType]?.[targetType] ?? 1;
+  return effectivenessChart[attackType]?.[targetType] || 1;
 }
 
 function calcDamage(attacker, defender, move) {
   const power = move.power;
-  debugger;
   const effective = getEffectiveness(move.type, defender.type);
   const base = attacker.atk + power;
   const rawDamage = base * effective - defender.def;
@@ -33,15 +46,15 @@ function calcDamage(attacker, defender, move) {
 function updateUI() {
   const currentPlayerHP = playerHPMap[playerIndex];
   const currentPcHP = pcHPMap[pcIndex];
-
+    console.log(player)
   $('#player-pokemon').text(player.name);
   $('#pc-pokemon').text(pc.name);
   $('#player-hp').text(Math.max(currentPlayerHP, 0));
   $('#pc-hp').text(Math.max(currentPcHP, 0));
   updateBar($('#player-hp-bar'), currentPlayerHP, player.hp);
   updateBar($('#pc-hp-bar'), currentPcHP, pc.hp);
-  $('#player-sprite').attr('src', `sprites/back/${player.name}.png`);
-  $('#pc-sprite').attr('src', `sprites/front/${pc.name}.png`);
+  $('#player-sprite').attr('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/back/${player.id}.gif`);
+  $('#pc-sprite').attr('src', `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pc.id}.gif`);
 }
 
 function updateBar($bar, current, max) {
@@ -221,12 +234,12 @@ async function executeTurn(playerMoveName) {
 $(document).ready(function () {
   $.when(
     $.getJSON("../pokemons.json"),
-    $.getJSON("../moves.json"),
-    $.getJSON("../effectiveness.json")
-  ).done(function (pokeRes, moveRes, effectivenessRes) {
+    $.getJSON("../moves.json")
+  ).done(function (pokeRes, moveRes) {
+
+    
     const pokemons = pokeRes[0];
     const moves = moveRes[0];
-    effectivenessChart = effectivenessRes[0];
 
     moves.forEach(m => {
       movesData[m.name] = m;
@@ -239,8 +252,8 @@ $(document).ready(function () {
       return;
     }
 
-    playerTeam = pokemons.filter(p => playerTeamNames.includes(p.name));
-
+    playerTeam = pokemons.filter(p => playerTeamNames.includes(p.id));
+      // console.log(playerTeam);
     while (pcTeam.length < 6) {
       const rand = pokemons[Math.floor(Math.random() * pokemons.length)];
       if (!playerTeamNames.includes(rand.name) && !pcTeam.includes(rand)) {

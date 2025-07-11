@@ -3,9 +3,11 @@ let selected = [];
 $(document).ready(function () {
   $.getJSON("pokemons.json", function (data) {
     data.forEach((pokemon, index) => {
+      console.log(index, pokemon);
       const card = `
         <div class="col-md-3">
-          <div class="card pokemon" data-name="${pokemon.name}">
+          <div class="card pokemon" data-id="${pokemon.id}">
+           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon.id}.gif" style="width: 60px; margin:auto">
             <div class="card-body text-center">
               <h5 class="card-title">${pokemon.name}</h5>
               <p>Type: ${pokemon.type}</p>
@@ -19,7 +21,7 @@ $(document).ready(function () {
 
     // Clique em Pokémon
     $('.pokemon').on('click', function () {
-      const name = $(this).data('name');
+      const name = $(this).data('id');
 
       if ($(this).hasClass('selected')) {
         $(this).removeClass('selected');
