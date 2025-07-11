@@ -7,7 +7,12 @@ $(document).ready(function () {
       const card = `
         <div class="col-md-3">
           <div class="card pokemon" data-id="${pokemon.id}">
-           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon.id}.gif" style="width: 60px; margin:auto">
+            
+            <!-- Wrapper com altura fixa para centralizar a sprite -->
+            <div class="sprite-wrapper d-flex justify-content-center align-items-center">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokemon.id}.gif" class="pokemon-sprite">
+            </div>
+            
             <div class="card-body text-center">
               <h5 class="card-title">${pokemon.name}</h5>
               <p>Type: ${pokemon.type}</p>

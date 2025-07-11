@@ -1,6 +1,7 @@
-.card.pokemon {
+/* .card.pokemon {
   cursor: pointer;
   transition: transform 0.2s;
+  height: 300px;
 }
 
 .card.pokemon:hover {
@@ -9,4 +10,18 @@
 
 .card.pokemon.selected {
   border: 3px solid #198754;
+} */
+
+.sprite-wrapper {
+  height: 100px; /* ou 120px, depende do tamanho desejado */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* evita sprites muito grandes ultrapassarem */
+}
+
+.pokemon-sprite {
+  max-height: 100%; 
+  max-width: 100%;
+  image-rendering: auto; /* suaviza imagem */
 }

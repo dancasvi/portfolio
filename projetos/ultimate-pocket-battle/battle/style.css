@@ -67,3 +67,25 @@ button.move-btn {
 #end-screen button {
   font-size: 1.25rem;
 }
+
+/* Sprites dos Pokémon */
+
+/* #player-sprite,
+#pc-sprite {
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  image-rendering: pixelated;
+} */
+
+.sprite-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px; 
+  overflow: hidden;
+  position: relative;
+}
+
+

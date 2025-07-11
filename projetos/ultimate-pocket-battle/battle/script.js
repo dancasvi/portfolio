@@ -46,7 +46,7 @@ function calcDamage(attacker, defender, move) {
 function updateUI() {
   const currentPlayerHP = playerHPMap[playerIndex];
   const currentPcHP = pcHPMap[pcIndex];
-    console.log(player)
+    // console.log(player)
   $('#player-pokemon').text(player.name);
   $('#pc-pokemon').text(pc.name);
   $('#player-hp').text(Math.max(currentPlayerHP, 0));
