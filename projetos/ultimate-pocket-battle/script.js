@@ -12,5 +12,9 @@ $(document).ready(function () {
     alert("Selecionar 6 Pokémon aleatórios para jogador e PC.");
     // Aqui você criará o time aleatório e inicia a batalha
   });
+
+  $('#btn-reset-team').on('click', function () {
+    localStorage.removeItem('playerTeam');
+  });
   
 });

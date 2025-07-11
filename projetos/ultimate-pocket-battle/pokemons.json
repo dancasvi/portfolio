@@ -130,7 +130,7 @@
         "type": "Dragon",
         "hp": 472,
         "atk": 149,
-        "def": 147,
+        "def": 120,
         "spe": 54,
         "moves": ["Solar Beam", "Ice Punch", "Play Rough", "Water Gun"]
     },

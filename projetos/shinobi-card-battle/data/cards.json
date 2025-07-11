@@ -1,0 +1,28 @@
+{
+  "cards": [
+    {
+      "name": "Sasuke Uchiha",
+      "atk": 5,
+      "def": 3,
+      "type": "Ninjutsu",
+      "cost": 4,
+      "image": "img/characters/sasuke.jpg"
+    },
+    {
+      "name": "Chidori",
+      "atk": 3,
+      "def": 0,
+      "type": "Jutsu",
+      "cost": 2,
+      "image": "img/jutsus/chidori.jpg"
+    },
+    {
+      "name": "Bijuu Selvagem",
+      "atk": 7,
+      "def": 5,
+      "type": "Evento",
+      "cost": 6,
+      "image": "img/events/bijuu.jpg"
+    }
+  ]
+}
