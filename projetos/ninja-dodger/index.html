@@ -435,6 +435,20 @@
       $('#restart-btn').hide();
       gameLoop();
     });
+
+    $('#left-btn').on('touchstart mousedown', () => {
+    keys['ArrowLeft'] = true;
+  });
+  $('#left-btn').on('touchend mouseup mouseleave', () => {
+    keys['ArrowLeft'] = false;
+  });
+
+  $('#right-btn').on('touchstart mousedown', () => {
+    keys['ArrowRight'] = true;
+  });
+  $('#right-btn').on('touchend mouseup mouseleave', () => {
+    keys['ArrowRight'] = false;
+  });
   </script>
 </body>
 </html>
