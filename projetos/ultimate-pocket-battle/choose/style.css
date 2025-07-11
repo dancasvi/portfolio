@@ -1,4 +1,4 @@
-/* .card.pokemon {
+.card.pokemon {
   cursor: pointer;
   transition: transform 0.2s;
   height: 300px;
@@ -10,7 +10,7 @@
 
 .card.pokemon.selected {
   border: 3px solid #198754;
-} */
+}
 
 .sprite-wrapper {
   height: 100px; /* ou 120px, depende do tamanho desejado */
