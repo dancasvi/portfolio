@@ -13,7 +13,7 @@
 }
 
 .sprite-wrapper {
-  height: 100px; /* ou 120px, depende do tamanho desejado */
+  height: 120px; /* ou 120px, depende do tamanho desejado */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,4 +24,15 @@
   max-height: 100%; 
   max-width: 100%;
   image-rendering: auto; /* suaviza imagem */
+  
+}
+
+
+#confirm-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0;
+  z-index: 1000;
 }

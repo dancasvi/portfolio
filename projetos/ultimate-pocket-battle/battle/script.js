@@ -6,6 +6,19 @@ let player, pc;
 let movesData = {};
 let playerHPMap = {};
 let pcHPMap = {};
+let moves;
+
+// Controladores para aumentar o HP dos Pokémon o HP padrão será multiplicado pelo valor de controlHpPlayer e controlHpPc.
+// Ex: se o HP padrão = 10 se controlHpPlayer = 10 o HP final = 100.
+let controlHpPlayer = 10;
+let controlHpPc = 10;
+
+// Controladores de dano causado pelos ataques, o dano final será reduzido ou acrescido em 10% do dano calculado.
+// Lembrando que se os dois forem valores iguais o dano final será o mesmo. 
+let controlDamageMinus = 0;
+let controlDamagePlus = 0;
+
+
 
 const attackSound = new Audio("sounds/attack.mp3");
 const faintSound = new Audio("sounds/faint.mp3");
@@ -32,21 +45,27 @@ function getEffectiveness(attackType, targetType) {
   return effectivenessChart[attackType]?.[targetType] || 1;
 }
 
+
 function calcDamage(attacker, defender, move) {
+
   const power = move.power;
   const effective = getEffectiveness(move.type, defender.type);
   const base = attacker.atk + power;
   const rawDamage = base * effective - defender.def;
+  
   return {
-    damage: Math.max(Math.floor(rawDamage), 0),
+    damage: Math.max(Math.floor(rawDamage), 0) + Number((rawDamage * controlDamagePlus/100).toFixed(0)) - Number((rawDamage * controlDamageMinus/100).toFixed(0))  , // Reduz o dano em 10% para balancear
     effective
   };
 }
 
 function updateUI() {
+
+    
+
   const currentPlayerHP = playerHPMap[playerIndex];
   const currentPcHP = pcHPMap[pcIndex];
-    // console.log(player)
+     
   $('#player-pokemon').text(player.name);
   $('#pc-pokemon').text(pc.name);
   $('#player-hp').text(Math.max(currentPlayerHP, 0));
@@ -68,6 +87,7 @@ function delay(ms) {
 }
 
 function checkFaintAndSwitch() {
+
   if (playerHPMap[playerIndex] <= 0) {
     const available = playerTeam
       .map((poke, idx) => ({ ...poke, index: idx }))
@@ -111,13 +131,16 @@ function checkFaintAndSwitch() {
 
       $('#move-options').empty();
       player.moves.forEach(move => {
-        $('#move-options').append(`<button class="btn btn-primary move-btn">${move}</button>`);
+
+       let filteredMove = moves.filter(m => m.id === move);
+       $('#move-options').append(`<button class="btn btn-primary move-btn">${filteredMove[0].name}</button>`);
+
       });
 
       $('.move-btn').on('click', function () {
         if (playerHPMap[playerIndex] <= 0 || pcHPMap[pcIndex] <= 0) return;
         const move = $(this).text();
-        executeTurn(move);
+        executeTurn(move, moves);
       });
 
       $('#log').append(`<br>⚠️ Você enviou ${player.name}!`);
@@ -137,7 +160,8 @@ function checkFaintAndSwitch() {
       $('#log').append("<br>🏆 Você venceu! O PC ficou sem Pokémon!");
       $('.move-btn').prop('disabled', true);
       battleMusic.pause();
-      return;
+      alert("Parabens você venceu esta batalha!");
+      return location = "../"
     }
 
     pc = pcTeam[pcIndex];
@@ -146,12 +170,17 @@ function checkFaintAndSwitch() {
   }
 }
 
-async function executeTurn(playerMoveName) {
+async function executeTurn(playerMoveName, movesSet) {
   $('.move-btn').prop('disabled', true);
 
+  
+
   const playerMove = movesData[playerMoveName];
-  const pcMoveName = pc.moves[Math.floor(Math.random() * 4)];
-  const pcMove = movesData[pcMoveName];
+  const pcMoveID = pc.moves[pc.moves.length > 1 ? Math.floor(Math.random() * pc.moves.length) : 0];
+  const pcMove = movesSet.filter(m => m.id === pcMoveID)[0]
+  
+  //  console.log(pcMove)
+  
 
   const pPriority = playerMove.priority;
   const cPriority = pcMove.priority;
@@ -233,22 +262,24 @@ async function executeTurn(playerMoveName) {
 
 $(document).ready(function () {
   $.when(
-    $.getJSON("../pokemons.json"),
-    $.getJSON("../moves.json")
+    $.getJSON("../db/pokemons.json"),
+    $.getJSON("../db/moves.json")
   ).done(function (pokeRes, moveRes) {
 
     
     const pokemons = pokeRes[0];
-    const moves = moveRes[0];
+    moves = moveRes[0];
 
     moves.forEach(m => {
       movesData[m.name] = m;
     });
 
+    // console.log(moves)
+
     const playerTeamNames = JSON.parse(localStorage.getItem('playerTeam') || "[]");
     if (!playerTeamNames || playerTeamNames.length !== 6) {
       alert("Você precisa escolher 6 Pokémon antes de batalhar.");
-      window.location.href = "../choose/index.html";
+      window.location.href = "../choose/";
       return;
     }
 
@@ -262,26 +293,39 @@ $(document).ready(function () {
     }
 
     // Inicializa mapas de HP
-    playerTeam.forEach((p, i) => playerHPMap[i] = p.hp);
-    pcTeam.forEach((p, i) => pcHPMap[i] = p.hp);
+    playerTeam.forEach((p, i) => {
+      p.hp = p.hp * controlHpPlayer
+      playerHPMap[i] = p.hp
+    });
+    pcTeam.forEach((p, i) => {
+      p.hp = p.hp * controlHpPc
+      pcHPMap[i] = p.hp
+    });
 
     player = playerTeam[playerIndex];
     pc = pcTeam[pcIndex];
 
     updateUI();
 
+    
+
+    
+
     player.moves.forEach(move => {
-      $('#move-options').append(`<button class="btn btn-primary move-btn">${move}</button>`);
+      
+      let filteredMove = moves.filter(m => m.id === move);
+      // console.log()
+      $('#move-options').append(`<button class="btn btn-primary move-btn">${filteredMove[0].name}</button>`);
     });
 
     $('.move-btn').on('click', function () {
       if (playerHPMap[playerIndex] <= 0 || pcHPMap[pcIndex] <= 0) return;
       const move = $(this).text();
-      executeTurn(move);
+      executeTurn(move, moves);
     });
 
     $('body').one('click', () => {
-      battleMusic.play().catch(() => {});
+      // battleMusic.play().catch(() => {});
     });
   });
 });
