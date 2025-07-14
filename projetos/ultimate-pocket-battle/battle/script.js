@@ -264,6 +264,7 @@ $(document).ready(function () {
     
     const pokemons = pokeRes[0];
     moves = moveRes[0];
+    effectivenessChart = effectivenessRes[0];
 
     moves.forEach(m => {
       movesData[m.name] = m;
