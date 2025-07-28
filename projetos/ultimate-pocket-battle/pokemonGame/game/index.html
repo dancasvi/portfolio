@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pokémon Battle Menu</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="./style.css"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libertinus+Mono&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+ <body>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="navBar">
+        <div class="logo-section">
+            <i class="fas fa-bolt logo-icon"></i>
+            <h1>POKÉMON ARENA</h1>
+        </div>
+
+        <div class="resource-container">
+            <div class="resource-item">
+                <i class="fa-solid fa-coins"></i>
+                <span>Moedas:</span>
+                <div class="balance" id="coins-balance">100</div>
+            </div>
+
+            <div class="resource-item">
+                <i class="fa-solid fa-flask"></i>
+                <span>XP:</span>
+                <div class="balance" id="xp-balance">0</div>
+            </div>
+
+            <div class="resource-item">
+                <i class="fa-solid fa-diamond"></i>
+                <span>Gemas:</span>
+                <div class="balance" id="gem-balance">50</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="container">
+            <div class="game-section">
+                <div class="game-card">
+                    <div class="menu-buttons">
+                        <button class="menu-btn capture" id="capture-btn">
+                            <i class="fas fa-hand"></i>
+                            Captura Pokémon
+                            <small>1000 moedas</small>
+                        </button>
+                        
+                        <button class="menu-btn boss" id="boss-btn">
+                            <i class="fas fa-trophy"></i>
+                            Enfrentar Boss
+                            <small>10 gemas</small>
+                        </button>
+                        
+                        <button class="menu-btn market" id="market-btn">
+                            <i class="fas fa-store"></i>
+                            Loja
+                            <small>(Em breve)</small>
+                        </button>
+
+                        <button class="menu-btn collection" id="pc-btn">
+                            <i class="fas fa-desktop"></i>
+                            PC Pokémon
+                        </button>
+
+                        <button class="menu-btn events" id="events-btn">
+                            <i class="fa-solid fa-file"></i>
+                            Eventos
+                            <small>(Em breve)</small>
+                        </button>
+                        
+                        <button class="menu-btn bag" id="bag-btn">
+                            <i class="fas fa-briefcase"></i>
+                            Mochila
+                            <small>(Em breve)</small>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="pokemon-card">
+                    <div class="pokemon-header">
+                     GRUPO
+                    </div>
+                    
+                    <div class="loading-spinner" id="loading-spinner">
+                        <div class="spinner"></div>
+                    </div>
+                    
+                    <div id="selected-pokemon" class="selected-pokemon">
+                        <!-- Pokémon serão carregados aqui -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
